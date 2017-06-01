@@ -12,6 +12,7 @@ s.listen(1)
 
 
 def write(sock,addr):
+    print('connect from %s'%addr[0])
     filename=sock.recv(1024).decode('utf-8')
     textfile=open('./%s'%filename,'w')
     while True:
@@ -24,7 +25,7 @@ def write(sock,addr):
     quit()
 
 
-
+print('waiting...')
 while True:
     sock,addr=s.accept()
     p=Process(target=write,args=(sock,addr))
