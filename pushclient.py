@@ -17,7 +17,8 @@ textfile=open('./%s'%filename,'r')
 for line in open('./%s'%filename):
     line =textfile.readline()
     s.send(line.encode())
-o='over'
+o=input('please enter over:')
 s.send(o.encode())
+print(s.recv(1024).decode('utf-8'))
 s.close()
 quit()

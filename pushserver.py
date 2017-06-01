@@ -17,10 +17,12 @@ def write(sock,addr):
     textfile=open('./%s'%filename,'w')
     while True:
         data=sock.recv(1024).decode('utf-8')
-        if data=='over':break
+        if data=='over':
+            sock.send(b'get it')
+            break
         textfile.write('%s'%data)
-    textfile.close()
     print('successful receive from %s'%addr[0])
+    textfile.close()
     sock.close()
     quit()
 
